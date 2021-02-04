@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.example.data.database.entity.Product" />
+
+        <variable
+            name="eventListener"
+            type="com.example.fooddelivery.ui.main.utils.ProjectEventListeners.CartEvents" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/imageViewItem"
+            imageUrl="@{product.productStyleImage}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/chicken" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:text="@{product.productName}"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewItem"
+            app:layout_constraintStart_toEndOf="@id/imageViewItem"
+            app:layout_constraintTop_toTopOf="@id/imageViewItem"
+            tools:text="Hawaiian" />
+
+
+        <TextView
+            android:id="@+id/textViewCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:text='@{"x "+product.count}'
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/textViewName"
+            app:layout_constraintStart_toEndOf="@id/textViewName"
+            app:layout_constraintTop_toTopOf="@id/textViewName"
+            tools:text="x 2" />
+
+
+        <TextView
+            android:id="@+id/textViewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{Math.multiplyExact(product.sellingPrice,product.count)+" INR"}'
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textViewName"
+            app:layout_constraintTop_toBottomOf="@id/textViewName"
+            tools:text="46 INR" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16"
+            android:src="@drawable/ic_noun_remove"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewItem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageViewItem" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
